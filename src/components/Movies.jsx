@@ -64,49 +64,29 @@ class Movies extends Component {
       sortColumn,
     } = this.state;
     if (count === 0)
-      return (
-        <p className="mb-5 ">
+      return <p className="mb-5 badge badge-info ">
           {" "}
-          <span className="shadow-lg p-3 mb-5 bg-white rounded">
+          <span>
             There are no movies
           </span>
-        </p>
-      );
+        </p>;
 
       const {totalCount, data: movies} = this.getPageData();
     
-    return (
-      <div className="row">
+    return <div className="row">
         <div className="col-3" style={{ padding: "10px" }}>
-          <ListGroup
-            items={this.state.genres}
-            selectedItem={this.state.selectedGenre}
-            onItemSelect={this.handleGenreSelect}
-          />
+          <ListGroup items={this.state.genres} selectedItem={this.state.selectedGenre} onItemSelect={this.handleGenreSelect} />
         </div>
         <div className="col">
-          <p className="mb-5 ">
-            <span className="shadow-lg p-3 bg-white rounded">
-              Showing <span className="badge badge-info">{totalCount}</span> movies
-              in the database
-            </span>
+          <p className="badge badge-info">
+
+              Showing <span>{totalCount}</span> movies in the database
+
           </p>
-          <MovieTable
-            movies={movies}
-            sortColumn={sortColumn}
-            onLike={this.handleLike}
-            onDelete={this.handleDelete}
-            onSort={this.handleSort}
-          />
-          <Pagination
-            itemsCount={totalCount}
-            pageSize={pageSize}
-            currentPage={currentPage}
-            onPageChange={this.handlePageChange}
-          />
+          <MovieTable movies={movies} sortColumn={sortColumn} onLike={this.handleLike} onDelete={this.handleDelete} onSort={this.handleSort} />
+          <Pagination itemsCount={totalCount} pageSize={pageSize} currentPage={currentPage} onPageChange={this.handlePageChange} />
         </div>
-      </div>
-    );
+      </div>;
   }
 }
 
