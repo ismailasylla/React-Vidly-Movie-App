@@ -5,6 +5,7 @@ import Pagination from "./common/Pagination";
 import { paginate } from "./utils/paginate";
 import ListGroup from "./common/ListGroup";
 import MovieTable from "./MoviesTable";
+import {Link} from 'react-router-dom'
 import _ from 'lodash';
 
 
@@ -78,9 +79,11 @@ class Movies extends Component {
           <ListGroup items={this.state.genres} selectedItem={this.state.selectedGenre} onItemSelect={this.handleGenreSelect} />
         </div>
         <div className="col">
+        <Link to="/movies/new" className="btn btn-primary" style={{  margin: 20, }}>
+            New Movie
+        </Link>
           <p className="badge badge-info">
-
-              Showing <span>{totalCount}</span> movies in the database
+          Showing <span>{totalCount}</span> movies in the database
 
           </p>
           <MovieTable movies={movies} sortColumn={sortColumn} onLike={this.handleLike} onDelete={this.handleDelete} onSort={this.handleSort} />
